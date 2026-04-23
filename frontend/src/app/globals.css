@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Fonte Inter via next/font ────────────────────────────── */
+/* A variável --font-inter é injetada pelo layout.tsx */
+
+/* ─── Reset e base ─────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    /* Suaviza scroll em toda a aplicação */
+    scroll-behavior: smooth;
+    /* Corrige tamanho de fonte em iOS quando rotaciona */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #020617;
+    color: #f1f5f9;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Impede scroll horizontal acidental */
+    overflow-x: hidden;
+  }
+
+  /* Remove outline padrão do browser — usamos ring do Tailwind */
+  :focus {
+    outline: none;
+  }
+
+  /* Scrollbar customizada (Chrome/Edge) */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* ─── Classes utilitárias CardWise ─────────────────────────── */
+@layer components {
+  /* Card de vidro principal — use em containers de destaque */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+  }
+
+  /* Card de vidro elevado — use dentro do glass-card */
+  .glass-elevated {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+  }
+
+  /* Input com estética de vidro */
+  .glass-input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 0.5px solid rgba(255, 255, 255, 0.10);
+    border-radius: 10px;
+    color: #f1f5f9;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .glass-input:focus {
+    border-color: rgba(124, 58, 237, 0.6);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  }
+
+  .glass-input::placeholder {
+    color: #475569;
+  }
+
+  /* Botão primário com gradiente violet */
+  .btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #4338ca);
+    color: #f1f5f9;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #6d28d9, #3730a3);
+    box-shadow: 0 4px 25px rgba(124, 58, 237, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(124, 58, 237, 0.3);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+/* ─── Variáveis CSS para Shadcn/UI ─────────────────────────── */
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263.4 70% 50.4%;
+    --radius: 0.625rem;
+  }
+}
