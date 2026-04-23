@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: cardwisedb
+      POSTGRES_USER: cardwiseuser
+      POSTGRES_PASSWORD: cardwisepassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - cardwise_db_data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+
+volumes:
+  cardwise_db_data:
